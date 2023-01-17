@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Factory | Company</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <section>
+        <nav>
+            <h2>Job Factory</h2>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="#">Jobs</a></li>
+              <li><a href="#">Companies</a></li>
+            </ul>
+          </nav>
+    </section>
+    <section>
+        <div class="header">
+            <h1>Company Register</h1>
+        </div>
+    </section>
+    <section>
+        <div class="form-container">
+            <form action="/companySignup" method="post">
+                <input type="text" name="name" placeholder="Company name" required>
+                <input type="email" name="email" placeholder="Email ID" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="rePassword" placeholder="Confirm password" required>
+                <input type="text" name="website" placeholder="Website" required>
+                <input type="textarea" name="description" placeholder="Description">
+
+                <button type="submit" name="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+    <hr>
+    <section>
+        <div class="below-form">
+            <h4>Registered already?</h4>
+            <button onclick="window.location.href = 'http://localhost:3000/companyLogin';">Login</button>
+        </div>
+    </section>
+</body>
+</html>

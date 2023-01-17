@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Spartan', sans-serif;
+}
+
+.main-container {
+    align-items: center;
+    display: flex;
+    border: 1px solid rgb(243, 76, 76);
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.intro {
+    height: 10vh;
+    margin: 35px 55px;
+}
+
+.company-container,
+.student-container {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 150px 0 150px 0;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: #cfd8dc;
+    border-style: solid;
+}
+
+.student-login-btn,
+.company-login-btn {
+    padding-top: 50px;
+}
+
+button {
+    align-items: center;
+    background-color: #FFFFFF;
+    border: 2px solid rgba(0, 0, 0, 0.368);
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    min-height: 3rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+}
+
+button:hover,
+button:focus {
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    color: rgba(0, 0, 0, 0.65);
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+button:active {
+    background-color: #F0F0F1;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(0);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 3rem;
+    background: #006b9a;
+    color: #FFFFFF;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav li {
+    padding-left: 5rem;
+}
+
+a {
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: red;
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.form-container{
+    margin: 50px 500px 50px 500px;
+    border: 1px solid black;
+    background-color: rgb(241, 241, 241);
+    padding: 20px 20px 20px 20px;
+}
+
+.header{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.below-form{
+    display: flex;
+    flex-direction: column;
+    margin: 50px 500px 50px 500px;
+}
+
+.below-form button,
+.form-container button{
+    margin-top: 20px;
+    width: 100%;
+}
