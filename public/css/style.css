@@ -10,14 +10,17 @@
 .main-container {
     align-items: center;
     display: flex;
-    border: 1px solid rgb(243, 76, 76);
     margin-left: 50px;
     margin-right: 50px;
+    margin-bottom: 50px;
+    margin-top: 100px;
 }
 
 .intro {
     height: 10vh;
     margin: 35px 55px;
+    display: flex;
+    flex-direction: row;
 }
 
 .company-container,
@@ -25,8 +28,8 @@
     margin: auto;
     width: 50%;
     border: 3px solid green;
-    padding: 150px 0 150px 0;
-    height: 450px;
+    padding: 90px 0 90px 0;
+    height: 300px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -36,7 +39,7 @@
 
 .student-login-btn,
 .company-login-btn {
-    padding-top: 50px;
+    padding-top: 30px;
 }
 
 button {
@@ -86,7 +89,7 @@ button:active {
     transform: translateY(0);
 }
 
-nav {
+nav,footer {
     display: flex;
     justify-content: space-between;
     padding: 2rem 3rem;
@@ -107,15 +110,19 @@ a {
     color: rgb(255, 255, 255);
     background-color: transparent;
     text-decoration: none;
+    border: 1px solid #006b9a;
+    padding: 18px;
 }
 
-a:hover {
-    color: red;
+nav a:hover {
+    color: rgba(255, 255, 255, 0.66);
+    border: 1px solid white;
+    padding: 18px;
 }
 
 input {
     width: 100%;
-    padding: 12px 20px;
+    padding: 12px 15px;
     margin: 8px 0;
     box-sizing: border-box;
 }
@@ -125,6 +132,7 @@ input {
     border: 1px solid black;
     background-color: rgb(241, 241, 241);
     padding: 20px 20px 20px 20px;
+    border-radius: 15px;
 }
 
 .header{
@@ -142,4 +150,31 @@ input {
 .form-container button{
     margin-top: 20px;
     width: 100%;
+}
+
+footer .copyright {
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+}
+
+img{
+    height: 80px;
+}
+
+.icon-tab{
+    width: 280px;
+    text-align: center;
+    padding-top: 10px;
+    height: 150px;
+}
+
+button[type=submit]{
+    background-color: rgb(147, 214, 247);
+}
+
+.job-card{
+    margin: 50px 300px 50px 300px;
+    padding: 50px 50px 50px 50px;
+    border: 2px solid black;
 }

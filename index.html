@@ -6,24 +6,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Factory | Home</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/css/style.css">
 </head>
 
 <body>
     <section>
         <nav>
             <h2>Job Factory</h2>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="#">Jobs</a></li>
-              <li><a href="#">Companies</a></li>
+            <ul class="left">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./allJobs.html">Jobs</a></li>
+                <li><a href="./allCompanies.html">Employers</a></li>
             </ul>
-          </nav>
+        </nav>
     </section>
 
     <section>
         <div class="intro">
-            <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum ipsum voluptatum inventore quam, sunt mollitia reiciendis architecto, placeat distinctio est dolorem animi odit, ducimus vel vero aliquam? Iusto, eligendi praesentium.</h4>
+            <div class="icon-tab">
+                <img src="public/img/company.png" alt="">
+                <br>
+                <h2>100</h2>
+                <h4>Companies</h4>
+            </div>
+            <div class="icon-tab">
+                <img src="public/img/job-seeker.png" alt="">
+                <br>
+                <h2>500</h2>
+                <h4>Jobs</h4>
+            </div>
+            <div class="icon-tab">
+                <img src="public/img/vacancy.png" alt="">
+                <br>
+                <h2>1000</h2>
+                <h4>Vacancies</h4>
+            </div>
+            <div class="icon-tab">
+                <img src="public/img/candidates.png" alt="">
+                <br>
+                <h2>10000</h2>
+                <h4>Candidates</h4>
+            </div>
+            <div class="icon-tab">
+                <img src="public/img/email.png" alt="">
+                <br>
+                <h2>5000</h2>
+                <h4>Candidates Placed</h4>
+            </div>
+
         </div>
     </section>
 
@@ -31,23 +61,32 @@
         <div class="main-container">
             <div class="company-container">
                 <div>
-                    <h3>Want to hire people?</h3>
+                    <h3>Employer Login</h3>
                 </div>
                 <div class="company-login-btn">
-                    <button onclick="window.location.href = 'http://localhost:3000/companyLogin';" >Click here</button>
+                    <button onclick="window.location.href = 'file:///D:/WOC%205.0/Node.JS/job-portal/companyLogin.html';">Click here</button>
                 </div>
             </div>
 
             <div class="student-container">
                 <div>
-                    <h3>Want to get hired?</h3>
+                    <h3>Candidate Login</h3>
                 </div>
                 <div class="student-login-btn">
-                    <button onclick="window.location.href = 'http://localhost:3000/studentLogin';">Click here</button>
+                    <button onclick="window.location.href = 'file:///D:/WOC%205.0/Node.JS/job-portal/studentLogin.html';">Click here</button>
                 </div>
             </div>
         </div>
     </section>
+
+    <footer>
+        <div class="copyright">
+            <p>&copy; 2023, <a href="#">Devarsh Nagrecha</a> - Job Portal</p>
+        </div>
+    </footer>
+
+    <script src="/index.js"></script>
+
 </body>
 
 </html>

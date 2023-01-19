@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require('cors');
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"))
 
@@ -19,7 +20,7 @@ const companySchema = new mongoose.Schema({
 });
 
 const jobSchema = new mongoose.Schema({
-    company: companySchema,
+    company: [String],
     position: String,
     batches: [Number],
     degrees: [String],
@@ -72,55 +73,80 @@ app.get("/studentSignup", function (req, res) {
 });
 
 app.get("/companyHome", function (req, res) {
-    res.sendFile(__dirname + "/companyHome.html");
+    Company.find({email : x, password :y},function (err, company) {
+        console.log(company);
+        res.json(company);
+    })
 })
 
 app.get("/studentHome", function (req, res) {
-    res.sendFile(__dirname + "/studentHome.html");
+    Student.find({email : a, password :b},function (err, student) {
+        //console.log(student);
+        res.json(student);
+    })
 })
 
 app.get("/addJob", function (req, res) {
     res.sendFile(__dirname + "/addJob.html");
 })
 
+app.get("/allJobs", function (req, res) {
+    Job.find({}, function (err, job) {
+        //console.log(job);
+        res.json(job);
+    })
+
+    // res.sendFile(__dirname + "/allJobs.html");
+})
+
+app.get("/allCompanies", function (req, res) {
+    res.sendFile(__dirname + "/allCompanies.html");
+})
+
+var x,y;
+
 app.post("/companyLogin", function (req, res) {
 
-    var x = req.body.email;
-    var y = req.body.password;
+    x = req.body.email;
+    y = req.body.password;
 
-    //console.log("company-login");
+    console.log("company-login");
 
     Company.findOne({ email: x, password: y }, function (err, company) {
         if (company) {
-            res.redirect("/companyHome");
+            console.log("sacho");
+            // res.redirect("/companyHome");
         }
         else {
-            res.redirect("/");
+            console.log("khoto");
+            //res.redirect("/");
         }
     })
-
 });
+
+var a,b;
 
 app.post("/studentLogin", function (req, res) {
 
-    var x = req.body.email;
-    var y = req.body.password;
+    var a = req.body.email;
+    var b = req.body.password;
 
     console.log("student-login");
 
-    Student.findOne({ email: x, password: y }, function (err, student) {
+    Student.findOne({ email: a, password: b }, function (err, student) {
         if (student) {
-            res.redirect("/studentHome");
+            console.log("sacho");
         }
         else {
-            res.redirect("/");
+            console.log("khoto");
         }
     })
 
 });
 
 app.post("/companySignup", function (req, res) {
-    var pass = req.body.rePassword;
+
+    console.log("company-added");
     const newCompany = new Company({
         name: req.body.name,
         email: req.body.email,
@@ -129,17 +155,16 @@ app.post("/companySignup", function (req, res) {
         description: req.body.description
     });
 
-    if (pass != req.body.password)
-        console.log("Passwords do not match!");
+    // if (pass != req.body.password)
+    //     console.log("Passwords do not match!");
 
-    else {
-        newCompany.save();
-        res.redirect("/");
-    }
+    // else {
+    newCompany.save();
+    
 });
 
 app.post("/studentSignup", function (req, res) {
-
+    
     const newStudent = new Student({
         firstname: req.body.firstname,
         middlename: req.body.middlename,
@@ -157,16 +182,15 @@ app.post("/studentSignup", function (req, res) {
         resume: req.body.resume
     });
 
-
+    console.log("student-added");
     newStudent.save();
-    res.redirect("/");
 
 })
 
 app.post("/addJob", function (req, res) {
 
     const newJob = new Job({
-        company: companySchema,
+        company: "google",
         position: req.body.position,
         batches: req.body.year,
         degrees: req.body.degree,

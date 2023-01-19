@@ -1,13 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Home</title>
+    <title>Company Home</title>
+    <link rel="stylesheet" href="public/css/style.css">
 </head>
+
 <body>
-    <h1>Student Logged in Successfully</h1>
-    
+    <section>
+        <nav>
+            <h2>Job Factory</h2>
+            <ul class="left">
+                <li><a href="/">Home</a></li>
+                <li><a href="/allJobs">Jobs</a></li>
+                <li><a href="/allCompanies">Employers</a></li>
+            </ul>
+        </nav>
+    </section>
+
+    <section>
+        <div class="header">
+            <h1>Candidate Home page</h1>
+            <br>
+            <br>
+            <button onclick="window.location.href = 'file:///D:/WOC%205.0/Node.JS/job-portal/';">Search Jobs</button>
+            <button onclick="window.location.href = 'file:///D:/WOC%205.0/Node.JS/job-portal/studentLogin.html';">Logout</button>
+            <button onclick="window.location.href = 'file:///D:/WOC%205.0/Node.JS/job-portal';">Edit profile</button>
+            <button onclick="window.location.href = 'file:///D:/WOC%205.0/Node.JS/job-portal';">My Jobs</button>
+        </div>
+        <br>
+        <br>
+        <div id="student">
+
+        </div>
+    </section>
+    <script src="./studentHome.js"></script>
 </body>
+
 </html>

@@ -5,18 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Factory | Student</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/css/style.css">
 </head>
 <body>
     <section>
         <nav>
             <h2>Job Factory</h2>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="#">Jobs</a></li>
-              <li><a href="#">Companies</a></li>
+            <ul class="left">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./allJobs.html">Jobs</a></li>
+                <li><a href="./allCompanies.html">Employers</a></li>
             </ul>
-          </nav>
+        </nav>
     </section>
     <section>
         <div class="header">
@@ -26,7 +26,7 @@
 
     <section>
         <div class="form-container">
-            <form action="/studentLogin" method="post">
+            <form action="studentHome.html" method="post">
                 <input type="email" name="email" placeholder="Email ID" required>
                 <input type="password" name="password" placeholder="Password" required>
                 <button type="submit" name="submit">Login</button>
@@ -39,7 +39,7 @@
     <section>
         <div class="below-form">
             <h4>Haven't registered yet?</h4>
-            <button onclick="window.location.href = 'http://localhost:3000/studentSignup';">Register</button>
+            <button onclick="window.location.href = 'file:///D:/WOC%205.0/Node.JS/job-portal/studentSignup.html';">Register</button>
         </div>
     </section>
 </body>

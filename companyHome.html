@@ -1,13 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Home</title>
+    <link rel="stylesheet" href="public/css/style.css">
 </head>
+
 <body>
-    <h1>Company Home page</h1>
-    <button onclick="window.location.href = 'http://localhost:3000/addJob';" >Add a new Job</button>
+    <section>
+        <nav>
+            <h2>Job Factory</h2>
+            <ul class="left">
+                <li><a href="/">Home</a></li>
+                <li><a href="/allJobs">Jobs</a></li>
+                <li><a href="/allCompanies">Employers</a></li>
+            </ul>
+        </nav>
+    </section>
+
+    <section>
+        <div class="header">
+            <h1>Company Home page</h1>
+            <br>
+            <br>
+            <button onclick="window.location.href = 'file:///D:/WOC%205.0/Node.JS/job-portal/addJob.html';">Add a new Job</button>
+            <button onclick="window.location.href = 'file:///D:/WOC%205.0/Node.JS/job-portal/companyLogin.html';">Logout</button>
+            <button onclick="window.location.href = 'file:///D:/WOC%205.0/Node.JS/job-portal';">Edit profile</button>
+            <button onclick="window.location.href = 'file:///D:/WOC%205.0/Node.JS/job-portal';">My Jobs</button>
+        </div>
+        <br>
+        <br>
+        <div id="company">
+
+        </div>
+    </section>
+    <script src="./companyHome.js"></script>
 </body>
+
 </html>
