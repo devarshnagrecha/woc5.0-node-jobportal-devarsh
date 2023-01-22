@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <section>
+        <nav>
+            <h2>Job Factory</h2>
+            <ul class="left">
+                <li><a class="active" href="/employerHome">Profile</a></li>
+                <li><a href="/myJobs">My Jobs</a></li>
+                <li><a href="/addJob">Add Job</a></li>
+                <li><a href="/updateEmployer">Edit Profile</a></li>
+            </ul>
+        </nav>
+    </section>
+
+    <section>
+        <div class="header">
+            <h1>Employer Home page</h1>
+            <br>
+            <br>
+            <h3>Welcome back, <%= name %></h3>
+        </div>
+
+        <div class="profile-body">
+            <p>Company Name: <%= name %></p>
+            <br>
+            <p>Email: <%= email %></p>
+            <br>
+            <p>Website <%= website %></p>
+            <br>
+            <p>Description: <%= description %></p>
+            <br>
+
+            <form action="/logoutEmployer?_method=DELETE" method="POST">
+                <button type="submit">Log Out</button>
+            </form>
+        </div>
+
+        <div class="btn-container">
+            <!-- <button onclick="window.location.href = '/';">Add a new Job</button> -->
+            <form action="/employerHome" method="post">
+                <button type="submit" onclick=confirmation()>Delete Account</button>
+            </form>
+            <p class="text-center">Note: Deleting your account will remove all your added jobs.</p>
+            <!-- <button onclick="window.location.href = '/';">My Jobs</button> -->
+        </div>
+        <br>
+        <br>
+        <div id="company">
+
+        </div>
+    </section>
+    <script src="candidateHome.js"></script>
+</body>
+
+</html>

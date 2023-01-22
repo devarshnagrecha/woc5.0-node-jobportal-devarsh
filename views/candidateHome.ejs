@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <section>
+        <nav>
+            <h2>Job Factory</h2>
+            <ul class="left">
+                <li><a class="active" href="/candidateHome">Profile</a></li>
+                <li><a href="/searchJobs">Search Jobs</a></li>
+                <li><a href="/updateCandidate">Edit Profile</a></li>
+            </ul>
+        </nav>
+    </section>
+
+    <section>
+        <div class="header">
+            <h1>Candidate Home page</h1>
+            <br>
+            <br>
+            <h3>Welcome back, <%= firstname %></h3>
+        </div>
+        <% var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }; %> 
+        <div class="profile-body">
+            <h3>Personal Details</h3>
+            <br>
+            <p>First name : <%= firstname %></p>
+            <br>
+            <p>Middle name : <%= middlename %></p>
+            <br>
+            <p>Last name : <%= lastname %></p>
+            <br>
+            <p>Email : <%= email %></p>
+            <br>
+            <p>Mobile Number : <%= mobileNO %></p>
+            <br>
+            <p>Birth date : <%= dob.toLocaleDateString("en-US", options) %></p>
+            <br>
+            <p>Gender : <%= gender %></p>
+            <br>
+            <br>
+            <h3>Educational Details</h3>
+            <br>
+            <p>College : <%= college %></p>
+            <br>
+            <p>Degree : <%= degree %></p>
+            <br>
+            <p>Expected year of passing : <%= batch %></p>
+            <br>
+            <p>Current CPI : <%= cpi %></p>
+            <br>
+            <p>Skills : <%= skills %></p>
+            <br>
+            <p>Resume : <%=resume %></p>
+            <br>
+
+            <form action="/logoutCandidate?_method=DELETE" method="POST">
+                <button type="submit">Log Out</button>
+            </form>
+        </div>
+
+        <div class="btn-container">
+            <!-- <button onclick="window.location.href = '/';">Add a new Job</button> -->
+            <form action="/candidateHome" method="post">
+                <button type="submit">Delete Account</button>
+            </form>
+            <!-- <button onclick="window.location.href = '/';">My Jobs</button> -->
+        </div>
+        <br>
+        <br>
+        <div id="company">
+
+        </div>
+    </section>
+    <script src="candidateHome.js"></script>
+</body>
+
+</html>

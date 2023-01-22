@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Factory | Company</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <section>
+        <nav>
+            <h2>Job Factory</h2>
+            <ul class="left">
+                <li><a href="/employerHome">Profile</a></li>
+                <li><a href="/myJobs">My Jobs</a></li>
+                <li><a href="/addJob">Add Job</a></li>
+                <li><a class="active" href="/updateEmployer">Edit Profile</a></li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <div class="header">
+            <h1>Edit Profile</h1>
+        </div>
+    </section>
+    <section>
+        <div class="form-container">
+            <form action="/updateEmployer" method="post" id="companySignup">
+                <label for="u1">Company Name</label>
+                <input id="u1" type="text" name="name" placeholder="Company name" value="<%= name %>" required>
+                <label for="u2">Email</label>
+                <input id="u2" type="email" name="email" placeholder="Email ID" value="<%= email %>" required>
+                <label for="u3">Website</label>
+                <input id="u3" type="url" name="website" placeholder="Website" value="<%= website %>" required>
+                <label for="u4">Description</label>
+                <input id="u4" type="textarea" name="description" placeholder="Description" value="<%= description %>"required>
+
+                <button type="submit" name="submit">Update</button>
+            </form>
+        </div>
+    </section>
+    <hr>
+    <script src="./companySignup.js"></script>
+</body>
+
+</html>

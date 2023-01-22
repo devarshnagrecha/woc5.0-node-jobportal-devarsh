@@ -6,17 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Factory | Home</title>
-    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
     <section>
         <nav>
-            <h2>Job Factory</h2>
+            <div class="symbol">
+                <h2><a href="/">Job Factory</a></h2>
+            </div>
             <ul class="left">
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./allJobs.html">Jobs</a></li>
-                <li><a href="./allCompanies.html">Employers</a></li>
+                <li><a class="active" href="/">Home</a></li>
+                <li><a href="/allJobs">Jobs</a></li>
+                <li><a href="/">Employers</a></li>
             </ul>
         </nav>
     </section>
@@ -24,31 +26,31 @@
     <section>
         <div class="intro">
             <div class="icon-tab">
-                <img src="public/img/company.png" alt="">
+                <img src="/img/company.png" alt="">
                 <br>
                 <h2>100</h2>
                 <h4>Companies</h4>
             </div>
             <div class="icon-tab">
-                <img src="public/img/job-seeker.png" alt="">
+                <img src="/img/job-seeker.png" alt="">
                 <br>
                 <h2>500</h2>
                 <h4>Jobs</h4>
             </div>
             <div class="icon-tab">
-                <img src="public/img/vacancy.png" alt="">
+                <img src="/img/vacancy.png" alt="">
                 <br>
                 <h2>1000</h2>
                 <h4>Vacancies</h4>
             </div>
             <div class="icon-tab">
-                <img src="public/img/candidates.png" alt="">
+                <img src="/img/candidates.png" alt="">
                 <br>
                 <h2>10000</h2>
                 <h4>Candidates</h4>
             </div>
             <div class="icon-tab">
-                <img src="public/img/email.png" alt="">
+                <img src="/img/email.png" alt="">
                 <br>
                 <h2>5000</h2>
                 <h4>Candidates Placed</h4>
@@ -64,7 +66,12 @@
                     <h3>Employer Login</h3>
                 </div>
                 <div class="company-login-btn">
-                    <button onclick="window.location.href = 'file:///D:/WOC%205.0/Node.JS/job-portal/companyLogin.html';">Click here</button>
+                    <!-- <% if (candAuth == 1) { %>
+                        <button onclick="window.location.href = '/employerLogin';" disabled>Click here</button>
+                    <% } else { %>
+                        <button onclick="window.location.href = '/employerLogin';">Click here</button>
+                    <% } %>  -->
+                    <button onclick="window.location.href = '/employerLogin';">Click here</button>
                 </div>
             </div>
 
@@ -73,7 +80,12 @@
                     <h3>Candidate Login</h3>
                 </div>
                 <div class="student-login-btn">
-                    <button onclick="window.location.href = 'file:///D:/WOC%205.0/Node.JS/job-portal/studentLogin.html';">Click here</button>
+                    <!-- <% if (empAuth == 1) { %>
+                        <button onclick="window.location.href = '/candidateLogin';" disabled>Click here</button>
+                    <% } else { %>
+                        <button onclick="window.location.href = '/candidateLogin';">Click here</button>
+                    <% } %>  -->
+                    <button onclick="window.location.href = '/candidateLogin';">Click here</button>
                 </div>
             </div>
         </div>

@@ -7,6 +7,12 @@
     font-family: 'Spartan', sans-serif;
 }
 
+.icon-container {
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
 .main-container {
     align-items: center;
     display: flex;
@@ -85,11 +91,12 @@ button:active {
     background-color: #F0F0F1;
     border-color: rgba(0, 0, 0, 0.15);
     box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
-    color: rgba(0, 0, 0, 0.65);
+    color: rgb(0, 0, 0);
     transform: translateY(0);
 }
 
-nav,footer {
+nav,
+footer {
     display: flex;
     justify-content: space-between;
     padding: 2rem 3rem;
@@ -115,39 +122,39 @@ a {
 }
 
 nav a:hover {
-    color: rgba(255, 255, 255, 0.66);
     border: 1px solid white;
+    border-radius: 20px;
     padding: 18px;
 }
 
-input {
+input,select {
     width: 100%;
     padding: 12px 15px;
     margin: 8px 0;
     box-sizing: border-box;
 }
 
-.form-container{
-    margin: 50px 500px 50px 500px;
+.form-container {
+    margin: 5% 35% 2% 35%;
     border: 1px solid black;
     background-color: rgb(241, 241, 241);
     padding: 20px 20px 20px 20px;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
-.header{
+.header {
     margin-top: 50px;
     text-align: center;
 }
 
-.below-form{
+.below-form {
     display: flex;
     flex-direction: column;
     margin: 50px 500px 50px 500px;
 }
 
 .below-form button,
-.form-container button{
+.form-container button {
     margin-top: 20px;
     width: 100%;
 }
@@ -158,23 +165,71 @@ footer .copyright {
     padding-top: 10px;
 }
 
-img{
+img {
     height: 80px;
 }
 
-.icon-tab{
+.icon-tab {
     width: 280px;
     text-align: center;
     padding-top: 10px;
     height: 150px;
 }
 
-button[type=submit]{
+button[type=submit] {
     background-color: rgb(147, 214, 247);
+    width: 50%;
+    margin-left: 25%;
 }
 
-.job-card{
+.job-card {
     margin: 50px 300px 50px 300px;
     padding: 50px 50px 50px 50px;
     border: 2px solid black;
+}
+
+.profile-body {
+    margin: 5% 25% 5% 25%;
+    padding: 20px 20px 20px 20px;
+    background-color: rgb(238, 238, 238);
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.btn-container {
+    margin: 5% 25% 5% 25%;
+}
+
+.error-mssg {
+
+    margin: 2% 35% 2% 35%;
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 0, 0);
+}
+
+.active {
+    background-color: white;
+    color: rgb(0, 0, 0);
+    border-radius: 20px;
+}
+
+.text-center {
+    margin-top: 5%;
+    text-align: center;
+    color: red;
+}
+
+label {
+    display: inline-flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 50px;
+}
+
+input[type=radio]{
+    flex: none;
+    justify-content: left;
 }

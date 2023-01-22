@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Job</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <section>
+        <nav>
+            <h2>Job Factory</h2>
+            <ul class="left">
+                <li><a href="/employerHome">Profile</a></li>
+                <li><a href="/myJobs">My Jobs</a></li>
+                <li><a class="active" href="/addJob">Add Job</a></li>
+                <li><a href="/updateEmployer">Edit Profile</a></li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <div class="header">
+            <h1>Add a new Job</h1>
+        </div>
+    </section>
+
+    <section>
+        <div class="form-container">
+            <form action="/addJob" method="post">
+                <input type="text" name="position" placeholder="Position" required>
+
+                <p>Required Degree</p>
+                <input type="checkbox" id="d1" name="degree" value="BTech">
+                <label for="d1"> BTech</label><br>
+                <input type="checkbox" id="d2" name="degree" value="BE">
+                <label for="d2"> BE</label><br>
+                <input type="checkbox" id="d3" name="degree" value="BSc">
+                <label for="d3"> BSc</label><br>
+                <input type="checkbox" id="d4" name="degree" value="MTech">
+                <label for="d4"> MTech</label><br>
+                <input type="checkbox" id="d5" name="degree" value="MSc">
+                <label for="d5"> MSc</label><br>
+                <input type="checkbox" id="d6" name="degree" value="MBA">
+                <label for="d6"> MBA</label><br>
+
+                <p>Expected year of completion</p>
+                <input type="checkbox" id="y1" name="year" value="2019">
+                <label for="y1"> 2019</label><br>
+                <input type="checkbox" id="y2" name="year" value="2020">
+                <label for="y2"> 2020</label><br>
+                <input type="checkbox" id="y3" name="year" value="2021">
+                <label for="y3"> 2021</label><br>
+                <input type="checkbox" id="y4" name="year" value="2022">
+                <label for="y4"> 2022</label><br>
+                <input type="checkbox" id="y5" name="year" value="2023">
+                <label for="y5"> 2023</label><br>
+                <input type="checkbox" id="y6" name="year" value="2024">
+                <label for="y6"> 2024</label><br>
+                <input type="checkbox" id="y7" name="year" value="2025">
+                <label for="y7"> 2025</label><br>
+                <input type="checkbox" id="y8" name="year" value="2026">
+                <label for="y8"> 2026</label><br>
+
+                <input type="number" name="cpi" step=".01" placeholder="Required CPI" required>
+                <input type="number" step=".01" name="ctc" placeholder="CTC in lpa" required>
+
+                <p>Job locations</p>
+                <input type="checkbox" id="l1" name="location" value="Banglore">
+                <label for="l1"> Banglore</label><br>
+                <input type="checkbox" id="l2" name="location" value="Pune">
+                <label for="l2"> Pune</label><br>
+                <input type="checkbox" id="l3" name="location" value="Mumbai">
+                <label for="l3"> Mumbai</label><br>
+                <input type="checkbox" id="l4" name="location" value="Delhi">
+                <label for="l4"> Delhi</label><br>
+                <input type="checkbox" id="l5" name="location" value="Chennai">
+                <label for="l5"> Chennai</label><br>
+                <input type="checkbox" id="l6" name="location" value="Gurgaon">
+                <label for="l6"> Gurgaon</label><br>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+</body>
+
+</html>

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Factory | Student</title>
-    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -14,22 +14,22 @@
         <nav>
             <h2>Job Factory</h2>
             <ul class="left">
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./allJobs.html">Jobs</a></li>
-                <li><a href="./allCompanies.html">Employers</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/allJobs">Jobs</a></li>
+                <li><a href="/">Employers</a></li>
             </ul>
         </nav>
     </section>
     <section>
         <div class="header">
-            <h1>Student Register</h1>
+            <h1>Candidate Register</h1>
         </div>
     </section>
 
     <section>
 
         <div class="form-container">
-            <form action="studentLogin.html" method="post">
+            <form action="/candidateSignup" method="post">
                 <div class="student-signup-form">
 
                     <div class="">
@@ -40,35 +40,45 @@
                         <input type="tel" name="mobileNo" placeholder="Mobile number" required>
                         <input type="email" name="email" placeholder="Email ID" required>
                         <input type="password" name="password" placeholder="Password" required>
-                        <input type="password" name="re-password" placeholder="Confirm password" required>
+                        <input type="password" name="rePassword" placeholder="Confirm password" required>
                         <br>
                         <br>
                         <label for="dob">Birth Date</label>
                         <input type="date" name="dob" id="dob" placeholder="Birth Date" required>
                         <br>
                         <br>
-                        <label for="">Gender</label>
-                        <input type="radio" id="male" name="gender" value="Male" required>
-                        <label for="male">Male</label><br>
-                        <input type="radio" id="female" name="gender" value="Female" required>
-                        <label for="female">Female</label><br>
-                        <input type="radio" id="other" name="gender" value="Other" required>
-                        <label for="other">Other</label>
+                        <div class="radio-checkbox-container">
+                            <p>Gender</p>
+                            <label> <input type="radio" id="male" name="gender" value="Male" required> <span>Male</span></label>
+                            <label> <input type="radio" id="female" name="gender" value="Female" required> <span>Female</span></label>
+                            <label> <input type="radio" id="other" name="gender" value="Other" required> <span>Other</span></label>
+                        </div>
                     </div>
                     <br>
+                    <hr>
                     <br>
                     <div>
                         <h3>Education Details</h3>
-                        <input type="text" name="institute" placeholder="College" required>
-                        <input type="text" name="degree" placeholder="Degree">
-                        <input type="number" step=".01" name="cpi" placeholder="Current CPI" required>
-                        <input type="number" name="batch" placeholder="Year of completion" required>
+                        <br>
+                        <input type="text" name="college" placeholder="College" required>
+                        <select name="degree" id="degree" required>
+                            <option value="" disabled selected>Select degree</option>
+                            <option value="BTech"> BTech </option>
+                            <option value="BE"> BE </option>
+                            <option value="BSc"> BSc </option>
+                            <option value="MTech"> MTech </option>
+                            <option value="MSc"> Msc </option>
+                            <option value="MBA"> MBA </option>
+                        </select>
+                        <input type="number" step=".01" name="cpi" max="10" min="0" placeholder="Current CPI out of 10" required>
+                        <input type="number" name="batch" step="1" max="2030" min="2012" placeholder="Year of completion" required>
                     </div>
                     <br>
+                    <hr>
                     <br>
                     <label for="resume">Upload Resume</label>
                     <input type="file" id="resume" name="resume" required>
-                    <input type="textarea" placeholder="Skills">
+                    <input type="textarea" placeholder="Skills" name="skills">
                     <button type="submit">Submit</button>
 
                 </div>
@@ -79,7 +89,7 @@
     <section>
         <div class="below-form">
             <h4>Registered already?</h4>
-            <button onclick="window.location.href = 'file:///D:/WOC%205.0/Node.JS/job-portal/studentLogin.html';">Login</button>
+            <button onclick="window.location.href = '/candidateLogin';">Login</button>
         </div>
     </section>
 

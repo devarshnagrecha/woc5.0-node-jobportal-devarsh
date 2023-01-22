@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Factory | Student</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <section>
+        <nav>
+            <h2>Job Factory</h2>
+            <ul class="left">
+                <li><a href="/candidateHome">Profile</a></li>
+                <li><a href="/searchJobs">Search Jobs</a></li>
+                <li><a class="active" href="/updateCandidate">Edit Profile</a></li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <div class="header">
+            <h1>Edit Profile</h1>
+        </div>
+    </section>
+
+    <section>
+
+        <div class="form-container">
+            <form action="/updateCandidate" method="post">
+                <div class="student-signup-form">
+
+                    <div class="">
+                        <h3>Personal Details</h3>
+                        <br>
+                        <label for="c1">First name</label>
+                        <input type="text" name="firstname" placeholder="First name" id="c1" value="<%= firstname %>" required>
+                        <label for="c2">Middle name</label>
+                        <input type="text" name="middlename" id="c2" placeholder="Middle name" value="<%= middlename %>"required>
+                        <label for="c3">Last name</label>
+                        <input type="text" id="c3" name="lastname" placeholder="Last name" required value="<%= lastname %>">
+                        <label for="c4">Mobile Number</label>
+                        <input type="tel" id="c4" name="mobileNo" placeholder="Mobile number" required value="<%= mobileNO %>">
+                        <label for="c5">Email</label>
+                        <input type="email" id="c5" name="email" placeholder="Email ID" required value="<%= email %>">
+                        <br>
+                        <br>
+                        <label for="dob">Birth Date</label>
+                        <input type="date" name="dob" id="dob" placeholder="Birth Date" required value="<%= dob %>">
+                        <br>
+                        <br>
+                        <div class="radio-checkbox-container">
+                            <p>Gender</p>
+                            <label> <input type="radio" id="male" name="gender" value="Male" required> <span>Male</span></label>
+                            <label> <input type="radio" id="female" name="gender" value="Female" required> <span>Female</span></label>
+                            <label> <input type="radio" id="other" name="gender" value="Other" required> <span>Other</span></label>
+                        </div>
+                    <br>
+                    <hr>
+                    <br>
+                    <div>
+                        <h3>Educational Details</h3>
+                        <input type="text" name="institute" placeholder="College" id="c6" required value="<%= college %>">
+                        <select name="degree" id="degree" required>
+                            <option value="" disabled selected>Select degree</option>
+                            <option value="BTech"> BTech </option>
+                            <option value="BE"> BE </option>
+                            <option value="BSc"> BSc </option>
+                            <option value="MTech"> MTech </option>
+                            <option value="MSc"> Msc </option>
+                            <option value="MBA"> MBA </option>
+                        </select>
+                        <input type="number" step=".01" name="cpi" placeholder="Current CPI out of 10" id="c8" max="10" min="0" required value="<%= cpi %>">
+                        <input type="number" name="batch" step="1" max="2030" min="2012" id="c9" placeholder="Year of completion" value="<%= batch %>" required>
+                    </div>
+                    <br>
+                    <hr>
+                    <br>
+                    <label for="resume">Upload Resume</label>
+                    <input type="file" id="resume" name="resume" value="<%= resume %>" required>
+                    <br>
+                    <label for="skills">Skills</label>
+                    <input type="textarea" placeholder="Skills" value="<%= skills %>" name="skills" id="skills">
+                    <button type="submit">Update</button>
+
+                </div>
+            </form>
+        </div>
+    </section>
+    <hr>
+    <section>
+        <div class="below-form">
+            <h4>Registered already?</h4>
+            <button onclick="window.location.href = '/candidateLogin';">Login</button>
+        </div>
+    </section>
+
+    <script src="./companySignup.js"></script>
+</body>
+
+</html>
