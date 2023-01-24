@@ -29,7 +29,7 @@
     <section>
 
         <div class="form-container">
-            <form action="/candidateSignup" method="post">
+            <form action="/candidateSignup" method="post" enctype="multipart/form-data">
                 <div class="student-signup-form">
 
                     <div class="">
@@ -77,7 +77,7 @@
                     <hr>
                     <br>
                     <label for="resume">Upload Resume</label>
-                    <input type="file" id="resume" name="resume" required>
+                    <input type="file" id="resume" name="resume" accept="pdf/*" required>
                     <input type="textarea" placeholder="Skills" name="skills">
                     <button type="submit">Submit</button>
 

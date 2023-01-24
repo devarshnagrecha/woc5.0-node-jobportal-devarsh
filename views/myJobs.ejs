@@ -31,7 +31,31 @@
     <section>
         <div class="job-cards-containers" id="job">
             <div class="job-card" >
-                
+                <% for (var i = 0; i <job.length; i++) {        %> 
+                    <p> <b>  Company name: </b><%= job[i].company_id %> </p>
+                    <br>
+                    <p> <b>Position:</b> <%= job[i].position %> </p> 
+                    <br>
+                    <p> <b> Degrees:</b> <%= job[i].degrees %> </p> 
+                    <br>
+                    <p> <b> Passout years:</b>  <%= job[i].batches %> </p> 
+                    <br>
+                    <p> <b> Required CPI out of 10: </b> <%= job[i].req_cpi %> </p> 
+                    <br>
+                    <p> <b>CTC: </b> <%= job[i].ctc %> </p> 
+                    <br>
+                    <p> <b> Locations:</b> <%= job[i].locations %> </p> 
+                    <br>
+                    <p> <b> Job apply URL: </b> <a id="link" href="<%= job[i].apply %>">Click here </a> %> </p>
+                    <br>
+                    <button type="submit" id="edit"> <img src="/img/pen.png" style="height:30px" alt=""></button>
+                    <button type="submit" id="delete"> <img src="/img/delete.png" style="height:30px" alt=""></button>
+                    <br>
+                    <br>
+                    <hr>
+                    <br>
+                    <% } %> 
+                    
             </div>
 
         </div>

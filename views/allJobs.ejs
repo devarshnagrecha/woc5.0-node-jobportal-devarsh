@@ -16,7 +16,7 @@
             <ul class="left">
                 <li><a href="/">Home</a></li>
                 <li><a class="active" href="/allJobs">Jobs</a></li>
-                <li><a href="/">Employers</a></li>
+                <li><a href="/allEmployers">Employers</a></li>
             </ul>
         </nav>
     </section>
@@ -29,8 +29,41 @@
 
     <section>
         <div class="job-cards-containers" id="job">
-            <div class="job-card" >
-                
+            <div class="job-card">
+                <% for (var i=0; i <job.length; i++) { %>
+                    <p> <b> Company name: </b>
+                        <%= job[i].company_id %>
+                    </p>
+                    <br>
+                    <p> <b>Position:</b>
+                        <%= job[i].position %>
+                    </p>
+                    <br>
+                    <p> <b> Degrees:</b>
+                        <%= job[i].degrees %>
+                    </p>
+                    <br>
+                    <p> <b> Passout years:</b>
+                        <%= job[i].batches %>
+                    </p>
+                    <br>
+                    <p> <b> Required CPI out of 10: </b>
+                        <%= job[i].req_cpi %>
+                    </p>
+                    <br>
+                    <p> <b>CTC: </b>
+                        <%= job[i].ctc %>
+                    </p>
+                    <br>
+                    <p> <b> Locations:</b>
+                        <%= job[i].locations %>
+                    </p>
+                    <br>
+                    <p> <b> Job apply URL: </b> <a id="link" href="<%= job[i].apply %>">Click here </a> %> </p>
+                    <br>
+                    <hr>
+                    <br>
+                    <% } %>
             </div>
 
         </div>

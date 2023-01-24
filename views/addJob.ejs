@@ -31,55 +31,63 @@
         <div class="form-container">
             <form action="/addJob" method="post">
                 <input type="text" name="position" placeholder="Position" required>
-
+                <br>
+                <br>
                 <p>Required Degree</p>
-                <input type="checkbox" id="d1" name="degree" value="BTech">
-                <label for="d1"> BTech</label><br>
-                <input type="checkbox" id="d2" name="degree" value="BE">
-                <label for="d2"> BE</label><br>
-                <input type="checkbox" id="d3" name="degree" value="BSc">
-                <label for="d3"> BSc</label><br>
-                <input type="checkbox" id="d4" name="degree" value="MTech">
-                <label for="d4"> MTech</label><br>
-                <input type="checkbox" id="d5" name="degree" value="MSc">
-                <label for="d5"> MSc</label><br>
-                <input type="checkbox" id="d6" name="degree" value="MBA">
-                <label for="d6"> MBA</label><br>
+                <br>
+                <label for="d1" class="container"> BTech <input type="checkbox" id="d1" name="degree"
+                value="BTech"><span class="checkmark"></span> </label><br>
+                
+                <label for="d2" class="container"> BE <input type="checkbox" id="d2" name="degree" value="BE"><span class="checkmark"></span></label><br>
+                
+                <label for="d3" class="container"> BSc <input type="checkbox" id="d3" name="degree" value="BSc"><span class="checkmark"></span></label><br>
+                
+                <label for="d4" class="container"> MTech <input type="checkbox" id="d4" name="degree" value="MTech"><span class="checkmark"></span></label><br>
+                
+                <label for="d5" class="container"> MSc <input type="checkbox" id="d5" name="degree" value="MSc"><span class="checkmark"></span></label><br>
+                
+                <label for="d6" class="container"> MBA <input type="checkbox" id="d6" name="degree" value="MBA"><span class="checkmark"></span></label><br>
+                <br>
+                <p>Passout year</p>
+                <br>
+                <label for="y1" class="container"> 2019 <input type="checkbox" id="y1" name="year" value="2019"><span class="checkmark"></span></label><br>
+                
+                <label for="y2" class="container"> 2020 <input type="checkbox" id="y2" name="year" value="2020"><span class="checkmark"></span></label><br>
+                
+                <label for="y3" class="container"> 2021 <input type="checkbox" id="y3" name="year" value="2021"><span class="checkmark"></span></label><br>
+                
+                <label for="y4" class="container"> 2022 <input type="checkbox" id="y4" name="year" value="2022"><span class="checkmark"></span></label><br>
+                
+                <label for="y5" class="container"> 2023 <input type="checkbox" id="y5" name="year" value="2023"><span class="checkmark"></span></label><br>
+                
+                <label for="y6" class="container"> 2024 <input type="checkbox" id="y6" name="year" value="2024"><span class="checkmark"></span></label><br>
+                
+                <label for="y7" class="container"> 2025 <input type="checkbox" id="y7" name="year" value="2025"><span class="checkmark"></span></label><br>
+                
+                <label for="y8" class="container"> 2026 <input type="checkbox" id="y8" name="year" value="2026"><span class="checkmark"></span></label><br>
 
-                <p>Expected year of completion</p>
-                <input type="checkbox" id="y1" name="year" value="2019">
-                <label for="y1"> 2019</label><br>
-                <input type="checkbox" id="y2" name="year" value="2020">
-                <label for="y2"> 2020</label><br>
-                <input type="checkbox" id="y3" name="year" value="2021">
-                <label for="y3"> 2021</label><br>
-                <input type="checkbox" id="y4" name="year" value="2022">
-                <label for="y4"> 2022</label><br>
-                <input type="checkbox" id="y5" name="year" value="2023">
-                <label for="y5"> 2023</label><br>
-                <input type="checkbox" id="y6" name="year" value="2024">
-                <label for="y6"> 2024</label><br>
-                <input type="checkbox" id="y7" name="year" value="2025">
-                <label for="y7"> 2025</label><br>
-                <input type="checkbox" id="y8" name="year" value="2026">
-                <label for="y8"> 2026</label><br>
-
-                <input type="number" name="cpi" step=".01" placeholder="Required CPI" required>
-                <input type="number" step=".01" name="ctc" placeholder="CTC in lpa" required>
-
+                <input type="number" name="cpi" step=".01" min="0" max="10" placeholder="Required CPI out of 10"
+                    required>
+                <input type="number" step=".01" name="ctc" min="0" placeholder="CTC in lpa" required>
+                <input type="url" name="apply" placeholder="Job apply link">
+                <br>
+                <br>
                 <p>Job locations</p>
-                <input type="checkbox" id="l1" name="location" value="Banglore">
-                <label for="l1"> Banglore</label><br>
-                <input type="checkbox" id="l2" name="location" value="Pune">
-                <label for="l2"> Pune</label><br>
-                <input type="checkbox" id="l3" name="location" value="Mumbai">
-                <label for="l3"> Mumbai</label><br>
-                <input type="checkbox" id="l4" name="location" value="Delhi">
-                <label for="l4"> Delhi</label><br>
-                <input type="checkbox" id="l5" name="location" value="Chennai">
-                <label for="l5"> Chennai</label><br>
-                <input type="checkbox" id="l6" name="location" value="Gurgaon">
-                <label for="l6"> Gurgaon</label><br>
+                <br>
+                
+                <label for="l1" class="container"> Banglore <input type="checkbox" id="l1" name="location" value="Banglore"><span class="checkmark"></span></label><br>
+                
+                <label for="l6" class="container"> Hyderabad <input type="checkbox" id="l6" name="location" value="Hyderabad"><span class="checkmark"></span></label><br>
+
+                <label for="l2" class="container"> Pune <input type="checkbox" id="l2" name="location" value="Pune"><span class="checkmark"></span></label><br>
+                
+                <label for="l3" class="container"> Mumbai <input type="checkbox" id="l3" name="location" value="Mumbai"><span class="checkmark"></span></label><br>
+                
+                <label for="l4" class="container"> Delhi <input type="checkbox" id="l4" name="location" value="Delhi"><span class="checkmark"></span></label><br>
+                
+                <label for="l5" class="container"> Chennai <input type="checkbox" id="l5" name="location" value="Chennai"><span class="checkmark"></span></label><br>
+                
+                <label for="l6" class="container"> Gurgaon <input type="checkbox" id="l6" name="location" value="Gurgaon"><span class="checkmark"></span></label><br>
 
                 <button type="submit">Submit</button>
             </form>

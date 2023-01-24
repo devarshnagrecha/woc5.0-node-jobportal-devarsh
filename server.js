@@ -17,17 +17,17 @@ const methodOverride = require('method-override');
 const initializePassportEmployer = require('./passport-config-employer');
 const initializePassportCandidate = require('./passport-config-candidate');
 
-// initializePassportEmployer(
-//     passportEmployer,
-//     email => Employer.findOne({ email: email }),
-//     id => id
-// );
-
-initializePassportCandidate(
-    passportCandidate,
-    email => Candidate.findOne({ email: email }),
+initializePassportEmployer(
+    passportEmployer,
+    email => Employer.findOne({ email: email }),
     id => id
 );
+
+// initializePassportCandidate(
+//     passportCandidate,
+//     email => Candidate.findOne({ email: email }),
+//     id => id
+// );
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -71,6 +71,7 @@ const jobSchema = new mongoose.Schema({
     degrees: [String],
     req_cpi: Number,
     ctc: Number,
+    apply: String,
     locations: [String]
 });
 
@@ -104,17 +105,34 @@ app.get('/', (req, res) => {
 
 app.get('/allJobs', (req, res) => {
 
-    var allJobs = [];
     Job.find({}, function (err, job) {
 
-        if (err) { console.error(err); }
-        console.log(job);
+        for (let i = 0; i < job.length; i++) {
+
+            //console.log(job[i].company_id);
+            Employer.findOne({'id': job[i].company_id}, function (err, employer) {
+                if (err) { console.log(err); }
+                console.log(employer.name + ' ' + i + ' ' + job[i].company_id);
+                job[i].company_id = employer.name;
+            })
+        }
+        //console.log(job);
+        res.render('allJobs.ejs', {job});
     })
-    // for (var i = 0; i < allJobs.length; i++) {
-    //     console.log(allJobs[i]);
-    // }
-    res.render('allJobs.ejs', { allJobs });
+
+    //console.log("ARRAY " + allJobs.length + " " + allJobs + " " + typeof(allJobs));
+    
 })
+
+app.get('/allEmployers', (req, res) => {
+
+    Employer.find({}, function (err, employer) {
+
+        if (err) { console.error(err); }
+        res.render('allEmployers.ejs', { employer });
+    })
+})
+
 
 app.get('/employerLogin', checkNotAuthenticatedEmployer, (req, res) => {
     res.render('employerLogin.ejs')
@@ -138,15 +156,14 @@ app.get('/addJob', checkAuthenticatedEmployer, (req, res) => {
 
 app.get('/searchJobs', checkAuthenticatedCandidate, (req, res) => {
 
-    var searchJobs = [];
     Candidate.findOne({ '_id': req.user }, function (err, candidate){
 
         Job.find( {'req_cpi' : {$lte : candidate.cpi}}, function (err, job){
-            console.log(job);
+            if (err) {console.log(err);}
+            res.render('searchJobs.ejs', {job});
         })
     });
-    Job.find({ })
-    res.render('searchJobs.ejs');
+    
 })
 
 app.get('/updateEmployer', checkAuthenticatedEmployer, (req, res) => {
@@ -198,16 +215,12 @@ app.post('/updateCandidate', checkAuthenticatedCandidate, (req, res) => {
 
 app.get('/myJobs', checkAuthenticatedEmployer, (req, res) => {
 
-    var myJobs = [];
-
     Job.find({ company_id: req.user }, function (err, job) {
-        job.forEach(function(element) {
-            myJobs.push(element);
-        });
         //console.log("MY JOB " + job);
+        if (err) {console.log(err);}
+        res.render('myJobs.ejs', {job});
     });
-    console.log("MYJOBS ARRAY IS HERE" + myJobs);
-    res.render('myJobs.ejs');
+    
 })
 
 app.get('/employerHome', checkAuthenticatedEmployer, (req, res) => {
@@ -281,13 +294,15 @@ app.post('/employerSignup', checkNotAuthenticatedEmployer, async (req, res) => {
         const pass2 = req.body.rePassword;
 
         if (pass1 != pass2) {
-            // passwords do not match
+
+            res.redirect('/employerSignup');
         }
 
         else {
 
             Employer.findOne({ email: req.body.email }, function (err, employer) {
                 if (employer != null) {
+                    res.redirect('/employerSignup');
                     // user already exists
                 }
                 else {
@@ -391,6 +406,7 @@ app.post('/addJob', checkAuthenticatedEmployer, (req, res) => {
             degrees: req.body.degree,
             req_cpi: req.body.cpi,
             ctc: req.body.ctc,
+            apply: req.body.apply,
             locations: req.body.location
         });
         //console.log("NEW JOB " + newJob);
