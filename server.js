@@ -16,18 +16,19 @@ const methodOverride = require('method-override');
 
 const initializePassportEmployer = require('./passport-config-employer');
 const initializePassportCandidate = require('./passport-config-candidate');
+const { query } = require('express');
 
-initializePassportEmployer(
-    passportEmployer,
-    email => Employer.findOne({ email: email }),
-    id => id
-);
-
-// initializePassportCandidate(
-//     passportCandidate,
-//     email => Candidate.findOne({ email: email }),
+// initializePassportEmployer(
+//     passportEmployer,
+//     email => Employer.findOne({ email: email }),
 //     id => id
 // );
+
+initializePassportCandidate(
+    passportCandidate,
+    email => Candidate.findOne({ email: email }),
+    id => id
+);
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -158,9 +159,9 @@ app.get('/searchJobs', checkAuthenticatedCandidate, (req, res) => {
 
     Candidate.findOne({ '_id': req.user }, function (err, candidate){
 
-        Job.find( {'req_cpi' : {$lte : candidate.cpi}}, function (err, job){
+        Job.find( {'req_cpi' : {$lte : candidate.cpi}, 'degrees': { "$in" : [candidate.degree]}, 'batches': { "$in" : [candidate.batch]}}, function (err, job){
             if (err) {console.log(err);}
-            res.render('searchJobs.ejs', {job});
+            res.render('searchJobs.ejs', {job, filter:'no'});
         })
     });
     
@@ -211,6 +212,69 @@ app.post('/updateCandidate', checkAuthenticatedCandidate, (req, res) => {
         if (err) { console.log(err); }
         res.redirect('/candidateHome');
     })
+})
+
+app.post('/searchJobs', checkAuthenticatedCandidate, (req, res) => {
+
+    // if (req.body.location != null)
+    const queryObj = {};
+
+    var filter_location = req.body.locations;
+    if (filter_location!=="Any") {
+        queryObj['locations'] = { "$in" : [filter_location]}
+    }
+
+    var filter_degree = req.body.degree;
+    if (filter_degree!=="Any") {
+        queryObj['degrees'] = { "$in" : [filter_degree]}
+    }
+
+    var maxCTC = 10000, minCTC = 0;
+
+    if (req.body.ctc == "Any") 
+    {
+        maxCTC = 10000; 
+        minCTC = 0;
+    }
+
+    else if (req.body.ctc == "<5")
+    {
+        maxCTC = 5;
+    }
+    else if (req.body.ctc == "5-10")
+    {
+        minCTC = 5;
+        maxCTC = 10;
+    }
+    else if (req.body.ctc == "10-20")
+    {
+        minCTC = 10;
+        maxCTC = 20;
+    }
+    else if (req.body.ctc == "20-30")
+    {
+        minCTC = 20;
+        maxCTC = 30;
+    }
+    else if (req.body.ctc == ">30")
+    {
+        minCTC = 30;
+    }
+
+    queryObj['ctc'] = { $gte :  minCTC, $lte :  maxCTC};
+
+    console.log(queryObj);
+    // 'locations': { "$in" : [filter_location]}, 
+    // 'degree': { "$in" : [filter_degree]},
+    Job.find(queryObj, function (err, job) {
+        if (err) { console.log(err); }
+        //console.log(job);
+        res.render('searchJobs.ejs', {job, filter:'yes', location_filter: filter_location, degree_filter: filter_degree, ctc_filter: req.body.ctc});
+    })
+    // Candidate.findByIdAndUpdate({ '_id': req.user }, { firstname: req.body.firstname, middlename: req.body.middlename, lastname: req.body.lastname, email: req.body.email, mobileNO: req.body.mobileNO, dob: req.body.dob, gender: req.body.gender, college: req.body.college, degree: req.body.degree, cpi: req.body.cpi, batch: req.body.batch, skills: req.body.skills, resume: req.body.resume }, function (err, employee) {
+    //     if (err) { console.log(err); }
+    //     res.redirect('/candidateHome');
+    // })
 })
 
 app.get('/myJobs', checkAuthenticatedEmployer, (req, res) => {

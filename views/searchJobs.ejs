@@ -23,7 +23,24 @@
 
     <section>
         <div class="header">
-            <h1>Jobs available for you</h1>
+
+            <% if (filter == 'no') {%> 
+            <h1>You are eligible for the following jobs</h1>
+            <% } else { %> 
+            <h1>Filtered Jobs</h1>
+            <br>
+            <br>
+            <br>
+            <h3> <b>Filters applied</b></h3>
+            <br>
+            <p><b>Location: </b> <%=location_filter %>  </p>
+            <br>
+            <p><b>Degree: </b> <%=degree_filter %> </p>
+            <br>
+            <p><b>CTC: </b> <%=ctc_filter %>  </p>
+            <br>
+            <br>
+            <% } %> 
         </div>
     </section>
 
@@ -32,13 +49,21 @@
             <div class="job-card" >
 
                 <% if (job.length == 0) {%> 
-                    <h3 style="text-align:center">Sorry, there are no jobs available for you currently</h3>
-                    <br>
+
+                    <% if (filter=="no") {%> 
+                        <h3 style="text-align:center">Sorry, there are no jobs available for you currently</h3>
+                        <br>
+                    <% } else { %>
+                        <h3 style="text-align:center">No jobs found for your filters</h3>
+                        <br>
+                    <% } %> 
                     <div class="icon-container">
-                        <img src="/img/embarrassed.png" style="height:100px">
-                    </div>
+                        <img src="/img/embarrassed.png" style="height:80px">
+                    </div>   
                 <% } %> 
+
                 <% for (var i = 0; i <job.length; i++) {        %> 
+                    <br>
                     <p> <b>  Company name: </b><%= job[i].company_id %> </p>
                     <br>
                     <p> <b>Position:</b> <%= job[i].position %> </p> 
@@ -56,6 +81,9 @@
                     <p> <b> Job apply URL: </b> <a id="link" href="<%= job[i].apply %>">Click here </a> %> </p>
                     <br>
                     <br>
+                    <% if (i!=job.length-1) {%> 
+                        <hr>
+                    <% } %> 
                     <hr>
                     <br>
                     <% } %> 
@@ -63,6 +91,48 @@
 
         </div>
         <script src="applyLink.js"></script>
+    </section>
+
+    <section>
+        <h1 class="header">Apply Filters</h1>
+        <div class="filter-form form-container">
+            <form action="/searchJobs" method="post">
+                <br>
+                <p>Job location</p>
+                <select name="locations" id="location">
+                    <option value="Any" selected>Any</option>
+                    <option value="Banglore"> Banglore </option>
+                    <option value="Chennai"> Chennai </option>
+                    <option value="Hyderabad"> Hyderabad </option>
+                    <option value="Pune"> Pune </option>
+                    <option value="Mumbai"> Mumbai </option>
+                    <option value="Delhi"> Delhi </option>
+                    <option value="Gurgaon"> Gurgaon </option>
+                </select>
+                <br>
+                <p>Degree required</p>
+                <select name="degree" id="degree">
+                    <option value="Any" selected>Any</option>
+                    <option value="BTech"> BTech </option>
+                    <option value="BE"> BE </option>
+                    <option value="BSc"> BSc </option>
+                    <option value="MTech"> MTech </option>
+                    <option value="MSc"> Msc </option>
+                    <option value="MBA"> MBA </option>
+                </select>
+                <br>
+                <p>CTC in lpa</p>
+                <select name="ctc" id="ctc" >
+                    <option value="Any" selected>Any</option>
+                    <option value=">30"> &gt 30 </option>
+                    <option value="20-30"> 20 to 30 </option>
+                    <option value="10-20"> 10 to 20 </option>
+                    <option value="5-10"> 5 to 10 </option>
+                    <option value="<5"> &lt 5 </option>
+                </select>
+                <button type="submit">Search</button>
+            </form>
+        </div>
     </section>
 
     <footer>

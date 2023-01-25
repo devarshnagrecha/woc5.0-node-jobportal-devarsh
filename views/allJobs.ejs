@@ -61,7 +61,9 @@
                     <br>
                     <p> <b> Job apply URL: </b> <a id="link" href="<%= job[i].apply %>">Click here </a> %> </p>
                     <br>
-                    <hr>
+                    <% if (i!=job.length-1) {%> 
+                        <hr>
+                        <% } %> 
                     <br>
                     <% } %>
             </div>
