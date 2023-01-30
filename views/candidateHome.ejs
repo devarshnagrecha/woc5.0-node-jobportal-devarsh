@@ -67,10 +67,10 @@
             </form>
         </div>
 
-        <div class="btn-container">
+        <div class="">
             <!-- <button onclick="window.location.href = '/';">Add a new Job</button> -->
             <form action="/candidateHome" method="post">
-                <button type="submit">Delete Account</button>
+                <button type="submit" id="delete-btn">Delete Account</button>
             </form>
             <!-- <button onclick="window.location.href = '/';">My Jobs</button> -->
         </div>
@@ -80,7 +80,13 @@
 
         </div>
     </section>
-    <script src="candidateHome.js"></script>
+    <script type="text/javascript">
+        document.getElementById("delete-btn").addEventListener("click", function () {
+            if (!confirm("Are you sure you want to delete your account?")){
+                event.preventDefault();
+            }
+        }); 
+    </script>
 </body>
 
 </html>

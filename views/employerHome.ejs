@@ -27,17 +27,22 @@
             <h1>Employer Home page</h1>
             <br>
             <br>
-            <h3>Welcome back, <%= name %></h3>
+            <h3>Welcome back, <%= name %>
+            </h3>
         </div>
 
         <div class="profile-body">
-            <p>Company Name: <%= name %></p>
+            <p>Company Name: <%= name %>
+            </p>
             <br>
-            <p>Email: <%= email %></p>
+            <p>Email: <%= email %>
+            </p>
             <br>
-            <p>Website <%= website %></p>
+            <p>Website <%= website %>
+            </p>
             <br>
-            <p>Description: <%= description %></p>
+            <p>Description: <%= description %>
+            </p>
             <br>
 
             <form action="/logoutEmployer?_method=DELETE" method="POST">
@@ -48,7 +53,7 @@
         <div class="">
             <!-- <button onclick="window.location.href = '/';">Add a new Job</button> -->
             <form action="/employerHome" method="post">
-                <button type="submit" onclick=confirmation()>Delete Account</button>
+                <button type="submit" id="delete-btn">Delete Account</button>
             </form>
             <p class="text-center">Note: Deleting your account will remove all your added jobs.</p>
             <!-- <button onclick="window.location.href = '/';">My Jobs</button> -->
@@ -59,7 +64,13 @@
 
         </div>
     </section>
-    <script src="candidateHome.js"></script>
+    <script type="text/javascript">
+        document.getElementById("delete-btn").addEventListener("click", function () {
+            if (!confirm("Are you sure you want to delete your account?")){
+                event.preventDefault();
+            }
+        }); 
+    </script>
 </body>
 
 </html>

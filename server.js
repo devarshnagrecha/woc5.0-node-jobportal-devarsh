@@ -24,11 +24,11 @@ initializePassportEmployer(
     id => id
 );
 
-// initializePassportCandidate(
-//     passportCandidate,
-//     email => Candidate.findOne({ email: email }),
-//     id => id
-// );
+initializePassportCandidate(
+    passportCandidate,
+    email => Candidate.findOne({ email: email }),
+    id => id
+);
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -287,7 +287,17 @@ app.post('/searchJobs', checkAuthenticatedCandidate, (req, res) => {
 app.get('/myJobs', checkAuthenticatedEmployer, (req, res) => {
 
     Job.find({ company_id: req.user }, function (err, job) {
-        //console.log("MY JOB " + job);
+
+        // for (var i=0; i<job.length; i++) {
+        //     var x = job[i].company_id, y ;
+        //     Employer.findById(x, function (err, employer) {
+        //         y = employer.name;
+        //         console.log(x + " " + y);
+        //     })
+        //     console.log(y);
+        //     job[i].company_id = y;
+        // }
+        // //console.log("MY JOB " + job);
         if (err) {console.log(err);}
         res.render('myJobs.ejs', {job});
     });
@@ -304,7 +314,7 @@ app.get('/employerHome', checkAuthenticatedEmployer, (req, res) => {
 
 })
 
-app.get('/candidateHome', checkAuthenticatedCandidate, (req, res) => {
+app.get('/candidateHome', checkAuthenticatedCandidate , (req, res) => {
 
     Candidate.findOne({ '_id': req.user }, function (err, candidate) {
         res.render('candidateHome.ejs', { firstname: candidate.firstname, middlename: candidate.middlename, lastname: candidate.lastname, email: candidate.email, mobileNO: candidate.mobileNO, dob: candidate.dob, gender: candidate.gender, college: candidate.college, degree: candidate.degree, cpi: candidate.cpi, batch: candidate.batch, skills: candidate.skills, resume: candidate.resume });
@@ -350,7 +360,7 @@ app.post('/employerHome', checkAuthenticatedEmployer, (req, res) => {
 
 })
 
-app.post('/employerLogin', passportEmployer.authenticate('local', {
+app.post('/employerLogin', passportEmployer.authenticate('employer', {
     successRedirect: '/employerHome',
     failureRedirect: '/employerLogin',
     failureFlash: true
@@ -405,7 +415,7 @@ app.post('/employerSignup', checkNotAuthenticatedEmployer, async (req, res) => {
     }
 })
 
-app.post('/candidateLogin', passportCandidate.authenticate('local', {
+app.post('/candidateLogin', passportCandidate.authenticate('candidate', {
     successRedirect: '/candidateHome',
     failureRedirect: '/candidateLogin',
     failureFlash: true
@@ -506,7 +516,7 @@ app.delete('/logoutCandidate', (req, res) => {
 })
 
 function checkAuthenticatedEmployer(req, res, next) {
-    if (req.isAuthenticated() && checkNotAuthenticatedCandidate) {
+    if (req.isAuthenticated()) {
         empAuth = 1;
         return next()
     }
@@ -525,7 +535,7 @@ function checkNotAuthenticatedCandidate(req, res, next) {
 }
 
 function checkAuthenticatedCandidate(req, res, next) {
-    if (req.isAuthenticated() && checkNotAuthenticatedEmployer) {
+    if (req.isAuthenticated()) {
         candAuth = 1;
         return next()
     }

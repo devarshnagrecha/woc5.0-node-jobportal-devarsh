@@ -6,7 +6,7 @@ function initialize(passportEmployer, getUserByEmail, getUserById)
   const authenticateUser = async (email, password, done) => 
   {
     const user = await getUserByEmail(email)
-    console.log(user)
+    console.log("EMPLOYER "+user)
     if (!user) {
       return done(null, false, { message: 'No such email registered!' })
     }
@@ -22,7 +22,7 @@ function initialize(passportEmployer, getUserByEmail, getUserById)
     }
   }
 
-  passportEmployer.use(new LocalStrategy({ usernameField: 'email' }, authenticateUser))
+  passportEmployer.use('employer',new LocalStrategy({ usernameField: 'email' }, authenticateUser))
   passportEmployer.serializeUser((user, done) => done(null, user.id))
   passportEmployer.deserializeUser((id, done) => {
     return done(null, getUserById(id))
