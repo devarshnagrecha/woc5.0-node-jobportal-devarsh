@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Job Factory | Company</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
     <section>
         <nav>
@@ -33,20 +35,23 @@
                 <input type="password" name="password" placeholder="Password" required>
                 <button type="submit">Login</button>
             </form>
+            <br>
+            <hr>
+            <br>
+            <div class="below-form">
+                <h5>Haven't registed yet? <a href="/employerSignup">Sign Up</a></h5>
+            </div>
         </div>
     </section>
     <div class="error-mssg">
         <% if (messages.error) { %>
             <%= messages.error %>
-        <% } %>
+                <% } %>
     </div>
     <hr>
     <section>
-        <div class="below-form">
-            <h4>Haven't registed yet?</h4>
-            <button onclick="window.location.href = '/employerSignup';" > Register</button>
-        </div>
     </section>
     <script src="./companyLogin.js"></script>
 </body>
+
 </html>

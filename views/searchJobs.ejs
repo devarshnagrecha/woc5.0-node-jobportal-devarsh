@@ -22,118 +22,139 @@
     </section>
 
     <section>
-        <div class="header">
-
-            <% if (filter == 'no') {%> 
-            <h1>You are eligible for the following jobs</h1>
-            <% } else { %> 
-            <h1>Filtered Jobs</h1>
-            <br>
-            <br>
-            <br>
-            <h3> <b>Filters applied</b></h3>
-            <br>
-            <p><b>Location: </b> <%=location_filter %>  </p>
-            <br>
-            <p><b>Degree: </b> <%=degree_filter %> </p>
-            <br>
-            <p><b>CTC: </b> <%=ctc_filter %>  </p>
-            <br>
-            <br>
-            <% } %> 
-        </div>
     </section>
 
-    <section>
-        <div class="job-cards-containers" id="job">
-            <div class="job-card" >
+    <div class="side-bar-container">
 
-                <% if (job.length == 0) {%> 
-
-                    <% if (filter=="no") {%> 
-                        <h3 style="text-align:center">Sorry, there are no jobs available for you currently</h3>
-                        <br>
-                    <% } else { %>
-                        <h3 style="text-align:center">No jobs found for your filters</h3>
-                        <br>
-                    <% } %> 
-                    <div class="icon-container">
-                        <img src="/img/embarrassed.png" style="height:80px">
-                    </div>   
-                <% } %> 
-
-                <% for (var i = 0; i <job.length; i++) {        %> 
+        <section class="left-section">
+            <div class="filter-form">
+                <h4 class="sub-header">Apply Filters</h4>
+                <form action="/searchJobs" method="post">
                     <br>
-                    <p> <b>  Company name: </b><%= job[i].company_id %> </p>
+                    <p>Job location</p>
+                    <select name="locations" id="location">
+                        <option value="Any" selected>Any</option>
+                        <option value="Banglore"> Banglore </option>
+                        <option value="Chennai"> Chennai </option>
+                        <option value="Hyderabad"> Hyderabad </option>
+                        <option value="Pune"> Pune </option>
+                        <option value="Mumbai"> Mumbai </option>
+                        <option value="Delhi"> Delhi </option>
+                        <option value="Gurgaon"> Gurgaon </option>
+                    </select>
                     <br>
-                    <p> <b>Position:</b> <%= job[i].position %> </p> 
+                    <p>Degree required</p>
+                    <select name="degree" id="degree">
+                        <option value="Any" selected>Any</option>
+                        <option value="BTech"> BTech </option>
+                        <option value="BE"> BE </option>
+                        <option value="BSc"> BSc </option>
+                        <option value="MTech"> MTech </option>
+                        <option value="MSc"> Msc </option>
+                        <option value="MBA"> MBA </option>
+                    </select>
                     <br>
-                    <p> <b> Degrees:</b> <%= job[i].degrees %> </p> 
+                    <p>CTC in lpa</p>
+                    <select name="ctc" id="ctc" >
+                        <option value="Any" selected>Any</option>
+                        <option value=">30"> &gt 30 </option>
+                        <option value="20-30"> 20 to 30 </option>
+                        <option value="10-20"> 10 to 20 </option>
+                        <option value="5-10"> 5 to 10 </option>
+                        <option value="<5"> &lt 5 </option>
+                    </select>
                     <br>
-                    <p> <b> Passout years:</b>  <%= job[i].batches %> </p> 
+                    <p>Passout Year</p>
+                    <select name="year" id="year">
+                        <option value="Any" selected>Any</option>
+                        <option value="2020"> 2020 </option>
+                        <option value="2021"> 2021 </option>
+                        <option value="2022"> 2022 </option>
+                        <option value="2023"> 2023 </option>
+                        <option value="2024"> 2024 </option>
+                        <option value="2025"> 2025 </option>
+                        <option value="2026"> 2026 </option>
+                        <option value="2027"> 2027 </option>
+                    </select>
                     <br>
-                    <p> <b> Required CPI out of 10: </b> <%= job[i].req_cpi %> </p> 
-                    <br>
-                    <p> <b>CTC: </b> <%= job[i].ctc %> </p> 
-                    <br>
-                    <p> <b> Locations:</b> <%= job[i].locations %> </p> 
-                    <br>
-                    <p> <b> Job apply URL: </b> <a id="link" href="<%= job[i].apply %>">Click here </a> %> </p>
-                    <br>
-                    <br>
-                    <% if (i!=job.length-1) {%> 
-                        <hr>
-                    <% } %> 
-                    <hr>
-                    <br>
-                    <% } %> 
+                    <button type="submit">Search</button>
+                </form>
             </div>
+        </section>
 
-        </div>
-        <script src="applyLink.js"></script>
-    </section>
+        <section class="right-section">
+            <div class="job-cards-containers" id="job">
+                <div class="header">
 
-    <section>
-        <h1 class="header">Apply Filters</h1>
-        <div class="filter-form form-container">
-            <form action="/searchJobs" method="post">
-                <br>
-                <p>Job location</p>
-                <select name="locations" id="location">
-                    <option value="Any" selected>Any</option>
-                    <option value="Banglore"> Banglore </option>
-                    <option value="Chennai"> Chennai </option>
-                    <option value="Hyderabad"> Hyderabad </option>
-                    <option value="Pune"> Pune </option>
-                    <option value="Mumbai"> Mumbai </option>
-                    <option value="Delhi"> Delhi </option>
-                    <option value="Gurgaon"> Gurgaon </option>
-                </select>
-                <br>
-                <p>Degree required</p>
-                <select name="degree" id="degree">
-                    <option value="Any" selected>Any</option>
-                    <option value="BTech"> BTech </option>
-                    <option value="BE"> BE </option>
-                    <option value="BSc"> BSc </option>
-                    <option value="MTech"> MTech </option>
-                    <option value="MSc"> Msc </option>
-                    <option value="MBA"> MBA </option>
-                </select>
-                <br>
-                <p>CTC in lpa</p>
-                <select name="ctc" id="ctc" >
-                    <option value="Any" selected>Any</option>
-                    <option value=">30"> &gt 30 </option>
-                    <option value="20-30"> 20 to 30 </option>
-                    <option value="10-20"> 10 to 20 </option>
-                    <option value="5-10"> 5 to 10 </option>
-                    <option value="<5"> &lt 5 </option>
-                </select>
-                <button type="submit">Search</button>
-            </form>
-        </div>
-    </section>
+                    <% if (filter == 'no') {%> 
+                    <h1>You are eligible for the following jobs</h1>
+                    <% } else { %> 
+                    <h3>Jobs found: <%= job.length %> </h3>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="filter-tags-container">
+                        <div class="filter-tags">
+                            <p><b>Location: </b> <%=location_filter %>  </p>
+                        </div>
+                        <div class="filter-tags">
+                            <p><b>Degree: </b> <%=degree_filter %> </p>
+                        </div>
+                        <div class="filter-tags">
+                            <p><b>CTC: </b> <%=ctc_filter %>  </p>
+                        </div>
+                        <div class="filter-tags">
+                            <p><b>Paasout year: </b> <%=year_filter %>  </p>
+                        </div>
+                    </div>
+                    <% } %> 
+                </div>
+                <div class="job-card" >
+    
+                    <% if (job.length == 0) {%> 
+    
+                        <% if (filter=="no") {%> 
+                            <h3 style="text-align:center">Sorry, there are no jobs available for you currently</h3>
+                            <br>
+                        <% } else { %>
+                            <h3 style="text-align:center">No jobs found for your filters</h3>
+                            <br>
+                        <% } %> 
+                        <div class="icon-container">
+                            <img src="/img/embarrassed.png" style="height:80px">
+                        </div>   
+                    <% } %> 
+    
+                    <% for (var i = 0; i <job.length; i++) {        %> 
+                        <br>
+                        <p> <b>  Company name: </b><%= job[i].company_id %> </p>
+                        <br>
+                        <p> <b>Position:</b> <%= job[i].position %> </p> 
+                        <br>
+                        <p> <b> Degrees:</b> <%= job[i].degrees %> </p> 
+                        <br>
+                        <p> <b> Passout years:</b>  <%= job[i].batches %> </p> 
+                        <br>
+                        <p> <b> Required CPI out of 10: </b> <%= job[i].req_cpi %> </p> 
+                        <br>
+                        <p> <b>CTC: </b> <%= job[i].ctc %> </p> 
+                        <br>
+                        <p> <b> Locations:</b> <%= job[i].locations %> </p> 
+                        <br>
+                        <p> <b> Job apply URL: </b> <a id="link" href="<%= job[i].apply %>">Click here </a> %> </p>
+                        <br>
+                        <br>
+                        <% if (i!=job.length-1) {%> 
+                            <hr>
+                        <% } %> 
+                        <br>
+                        <% } %> 
+                </div>
+    
+            </div>
+            <script src="applyLink.js"></script>
+        </section>
+    </div>
 
     <footer>
         <div class="copyright">

@@ -18,17 +18,17 @@ const initializePassportEmployer = require('./passport-config-employer');
 const initializePassportCandidate = require('./passport-config-candidate');
 const { query } = require('express');
 
-// initializePassportEmployer(
-//     passportEmployer,
-//     email => Employer.findOne({ email: email }),
-//     id => id
-// );
-
-initializePassportCandidate(
-    passportCandidate,
-    email => Candidate.findOne({ email: email }),
+initializePassportEmployer(
+    passportEmployer,
+    email => Employer.findOne({ email: email }),
     id => id
 );
+
+// initializePassportCandidate(
+//     passportCandidate,
+//     email => Candidate.findOne({ email: email }),
+//     id => id
+// );
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -98,6 +98,7 @@ const Employer = mongoose.model("Employer", employerSchema);
 const Job = mongoose.model("Job", jobSchema);
 
 app.get('/', (req, res) => {
+    console.log("PARAM " + req.params[0]);
     res.render('index.ejs', {
         candAuth,
         empAuth
@@ -229,6 +230,12 @@ app.post('/searchJobs', checkAuthenticatedCandidate, (req, res) => {
         queryObj['degrees'] = { "$in" : [filter_degree]}
     }
 
+    var filter_year = req.body.year;
+
+    if (filter_year!=="Any") {
+        queryObj['batches'] = { "$in" : [filter_year]}
+    }
+
     var maxCTC = 10000, minCTC = 0;
 
     if (req.body.ctc == "Any") 
@@ -269,7 +276,7 @@ app.post('/searchJobs', checkAuthenticatedCandidate, (req, res) => {
     Job.find(queryObj, function (err, job) {
         if (err) { console.log(err); }
         //console.log(job);
-        res.render('searchJobs.ejs', {job, filter:'yes', location_filter: filter_location, degree_filter: filter_degree, ctc_filter: req.body.ctc});
+        res.render('searchJobs.ejs', {job, filter:'yes', location_filter: filter_location, degree_filter: filter_degree, ctc_filter: req.body.ctc, year_filter: req.body.year});
     })
     // Candidate.findByIdAndUpdate({ '_id': req.user }, { firstname: req.body.firstname, middlename: req.body.middlename, lastname: req.body.lastname, email: req.body.email, mobileNO: req.body.mobileNO, dob: req.body.dob, gender: req.body.gender, college: req.body.college, degree: req.body.degree, cpi: req.body.cpi, batch: req.body.batch, skills: req.body.skills, resume: req.body.resume }, function (err, employee) {
     //     if (err) { console.log(err); }
