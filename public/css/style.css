@@ -151,6 +151,14 @@ select {
     border-radius: 10px;
 }
 
+.form-container-register {
+    margin: 5% 25% 2% 25%;
+    border: 1px solid black;
+    background-color: rgb(241, 241, 241);
+    padding: 20px 20px 20px 20px;
+    border-radius: 10px;
+}
+
 .header {
     margin-top: 4%;
     margin-bottom: 2%;
@@ -206,7 +214,7 @@ button[type=submit] {
     padding: 20px 20px 20px 20px;
     background-color: rgb(238, 238, 238);
     border: 1px solid black;
-    border-radius: 8px;
+    /* border-radius: 8px; */
 }
 
 .btn-container {

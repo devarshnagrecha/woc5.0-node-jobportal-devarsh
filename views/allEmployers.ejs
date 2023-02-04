@@ -39,7 +39,9 @@
                     <br>
                     <p>Description: <%= employer[i].description %> </p> 
                     <br>
-                    <hr>
+                    <% if (i!=employer.length-1) {%> 
+                        <hr>
+                    <% } %> 
                     <br>
                     <% } %> 
             </div>

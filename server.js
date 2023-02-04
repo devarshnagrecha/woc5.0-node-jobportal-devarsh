@@ -98,7 +98,7 @@ const Employer = mongoose.model("Employer", employerSchema);
 const Job = mongoose.model("Job", jobSchema);
 
 app.get('/', (req, res) => {
-    console.log("PARAM " + req.params[0]);
+    // console.log("PARAM " + req.params[0]);
     res.render('index.ejs', {
         candAuth,
         empAuth
@@ -114,7 +114,7 @@ app.get('/allJobs', (req, res) => {
             //console.log(job[i].company_id);
             Employer.findOne({'id': job[i].company_id}, function (err, employer) {
                 if (err) { console.log(err); }
-                console.log(employer.name + ' ' + i + ' ' + job[i].company_id);
+                // console.log(employer.name + ' ' + i + ' ' + job[i].company_id);
                 job[i].company_id = employer.name;
             })
         }
@@ -194,10 +194,10 @@ app.get('/updateJob', checkAuthenticatedEmployer, (req, res) => {
 
 app.post('/updateEmployer', checkAuthenticatedEmployer, (req, res) => {
 
-    // Employer.findByIdAndUpdate({ '_id': req.user }, { name: req.body.name, email: req.body.email, website: req.body.website, description: req.body.description }, function (err, employee) {
-    //     if (err) { console.log(err); }
-    //     res.redirect('/employerHome');
-    // })
+    Employer.findByIdAndUpdate({ '_id': req.user }, { name: req.body.name, email: req.body.email, website: req.body.website, description: req.body.description }, function (err, employee) {
+        if (err) { console.log(err); }
+        res.redirect('/employerHome');
+    })
 })
 
 app.get('/updateCandidate', checkAuthenticatedCandidate, (req, res) => {
@@ -270,7 +270,7 @@ app.post('/searchJobs', checkAuthenticatedCandidate, (req, res) => {
 
     queryObj['ctc'] = { $gte :  minCTC, $lte :  maxCTC};
 
-    console.log(queryObj);
+    // console.log(queryObj);
     // 'locations': { "$in" : [filter_location]}, 
     // 'degree': { "$in" : [filter_degree]},
     Job.find(queryObj, function (err, job) {
@@ -278,26 +278,11 @@ app.post('/searchJobs', checkAuthenticatedCandidate, (req, res) => {
         //console.log(job);
         res.render('searchJobs.ejs', {job, filter:'yes', location_filter: filter_location, degree_filter: filter_degree, ctc_filter: req.body.ctc, year_filter: req.body.year});
     })
-    // Candidate.findByIdAndUpdate({ '_id': req.user }, { firstname: req.body.firstname, middlename: req.body.middlename, lastname: req.body.lastname, email: req.body.email, mobileNO: req.body.mobileNO, dob: req.body.dob, gender: req.body.gender, college: req.body.college, degree: req.body.degree, cpi: req.body.cpi, batch: req.body.batch, skills: req.body.skills, resume: req.body.resume }, function (err, employee) {
-    //     if (err) { console.log(err); }
-    //     res.redirect('/candidateHome');
-    // })
 })
 
 app.get('/myJobs', checkAuthenticatedEmployer, (req, res) => {
 
     Job.find({ company_id: req.user }, function (err, job) {
-
-        // for (var i=0; i<job.length; i++) {
-        //     var x = job[i].company_id, y ;
-        //     Employer.findById(x, function (err, employer) {
-        //         y = employer.name;
-        //         console.log(x + " " + y);
-        //     })
-        //     console.log(y);
-        //     job[i].company_id = y;
-        // }
-        // //console.log("MY JOB " + job);
         if (err) {console.log(err);}
         res.render('myJobs.ejs', {job});
     });
@@ -329,7 +314,7 @@ app.post('/candidateHome', checkAuthenticatedCandidate, (req, res) => {
         if (err)
             console.log(err);
         else {
-            console.log("DELETE ACCOUNT" + req.user);
+            // console.log("DELETE ACCOUNT" + req.user);
             req.logOut(req.user, err => {
                 if (err) return next(err);
                 res.redirect('/');
@@ -337,7 +322,7 @@ app.post('/candidateHome', checkAuthenticatedCandidate, (req, res) => {
         }
     });
 
-    console.log("DELETE ACCOUNT" + req.user);
+    // console.log("DELETE ACCOUNT" + req.user);
 })
 
 app.post('/employerHome', checkAuthenticatedEmployer, (req, res) => {
@@ -350,7 +335,7 @@ app.post('/employerHome', checkAuthenticatedEmployer, (req, res) => {
         if (err)
             console.log(err);
         else {
-            console.log("DELETE ACCOUNT" + req.user);
+            // console.log("DELETE ACCOUNT" + req.user);
             req.logOut(req.user, err => {
                 if (err) return next(err);
                 res.redirect('/');
@@ -396,9 +381,9 @@ app.post('/employerSignup', checkNotAuthenticatedEmployer, async (req, res) => {
                             description: req.body.description
                         });
 
-                        console.log('hss', hashedPassword)
+                        // console.log('hss', hashedPassword)
                         newEmployer.save();
-                        console.log(newEmployer);
+                        // console.log(newEmployer);
 
                         res.redirect('/employerLogin');
                     }).catch(err => {
