@@ -51,7 +51,7 @@ app.use(methodOverride('_method'))
 app.set('view engine', 'ejs');
 mongoose.set('strictQuery', true);
 
-mongoose.connect("mongodb://localhost:27017/ejsDB", { useNewUrlParser: true });
+mongoose.connect(`mongodb+srv://devarsh_nagrecha:${process.env.PASSWORD}@cluster0.vqnm6ti.mongodb.net/ejsDB`, { useNewUrlParser: true });
 
 const saltRounds = 10;
 var candAuth = 0;
